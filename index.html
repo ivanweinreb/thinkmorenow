@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutureTech - VR & 3D Development</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: #0a0a1e; /* Dark blue-purple background */
+            color: #e0e0e0; /* Light grey text for readability */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Neon Glow Effects */
+        .neon-text-cyan {
+            text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00aaff, 0 0 70px #00aaff;
+        }
+        .neon-text-purple {
+            text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #bf00ff, 0 0 70px #bf00ff;
+        }
+        .neon-border-cyan {
+            border-color: #00ffff;
+            box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff inset, 0 0 8px #00ffff;
+        }
+         .neon-border-purple {
+            border-color: #ff00ff;
+            box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff inset, 0 0 8px #ff00ff;
+        }
+        .neon-button {
+            transition: all 0.3s ease;
+            border: 2px solid;
+        }
+        .neon-button-cyan {
+            border-color: #00ffff;
+            color: #00ffff;
+            box-shadow: 0 0 3px #00ffff, 0 0 5px #00ffff inset;
+        }
+        .neon-button-cyan:hover {
+            background-color: #00ffff;
+            color: #0a0a1e;
+            box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+        }
+        .neon-button-purple {
+            border-color: #c000ff;
+            color: #c000ff;
+            box-shadow: 0 0 3px #c000ff, 0 0 5px #c000ff inset;
+        }
+        .neon-button-purple:hover {
+            background-color: #c000ff;
+            color: #0a0a1e;
+            box-shadow: 0 0 10px #c000ff, 0 0 20px #c000ff, 0 0 30px #c000ff;
+        }
+
+        /* Navigation hover effect */
+        nav a {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #00ffff;
+            text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #00ffff;
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Section heading style */
+        .section-heading {
+            font-size: 2.5rem; /* Tailwind text-4xl */
+            font-weight: 700; /* Tailwind font-bold */
+            margin-bottom: 2rem; /* Tailwind mb-8 */
+            text-align: center;
+        }
+
+        /* Card styles */
+        .futuristic-card {
+            background-color: rgba(10, 20, 40, 0.7); /* Semi-transparent dark blue */
+            border: 1px solid #0077ff; /* Neon blue border */
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .futuristic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 15px #0077ff, 0 0 30px #0077ff;
+        }
+
+        /* Input field styling */
+        .neon-input {
+            background-color: rgba(10, 20, 40, 0.8);
+            border: 1px solid #0077ff;
+            color: #e0e0e0;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .neon-input:focus {
+            outline: none;
+            border-color: #00ffff;
+            box-shadow: 0 0 8px #00ffff, 0 0 5px #00ffff inset;
+        }
+        
+        /* Contact section animated background */
+        #contact {
+            position: relative;
+            overflow: hidden; /* Important for pseudo-element positioning */
+        }
+        #contact::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(45deg, rgba(0, 255, 255, 0.05) 25%, transparent 25%, transparent 75%, rgba(0, 255, 255, 0.05) 75%),
+                linear-gradient(45deg, rgba(0, 255, 255, 0.05) 25%, transparent 25%, transparent 75%, rgba(0, 255, 255, 0.05) 75%);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+            animation: animatedGrid 20s linear infinite;
+            z-index: -1; /* Place it behind the content */
+            opacity: 0.3;
+        }
+
+        @keyframes animatedGrid {
+            0% { background-position: 0 0, 30px 30px; }
+            100% { background-position: 60px 60px, 90px 90px; }
+        }
+
+        /* Hero canvas styling */
+        #heroCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Behind hero content but above background */
+            opacity: 0.7; /* Slightly increased opacity for better visibility of custom model */
+        }
+        
+        /* Scrollbar styling (optional, for a more thematic look) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a1e; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0077ff;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00ffff;
+        }
+
+        /* Animations for scroll reveal */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-80 backdrop-blur-md bg-[#0a0a1e]/80 shadow-lg">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#home" class="text-3xl font-bold neon-text-cyan">FutureTech</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#home" class="text-lg">Home</a>
+                <a href="#about" class="text-lg">About</a>
+                <a href="#portfolio" class="text-lg">Portfolio</a>
+                <a href="#services" class="text-lg">Services</a>
+                <a href="#blog" class="text-lg">Blog</a>
+                <a href="#contact" class="text-lg">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0a0a1e]/95">
+            <a href="#home" class="block py-3 px-6 text-lg hover:bg-[#0077ff]/30">Home</a>
+            <a href="#about" class="block py-3 px-6 text-lg hover:bg-[#0077ff]/30">About</a>
+            <a href="#portfolio" class="block py-3 px-6 text-lg hover:bg-[#0077ff]/30">Portfolio</a>
+            <a href="#services" class="block py-3 px-6 text-lg hover:bg-[#0077ff]/30">Services</a>
+            <a href="#blog" class="block py-3 px-6 text-lg hover:bg-[#0077ff]/30">Blog</a>
+            <a href="#contact" class="block py-3 px-6 text-lg hover:bg-[#0077ff]/30">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
+            <canvas id="heroCanvas"></canvas>
+            <div class="relative z-10 p-6">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 neon-text-cyan animate-pulse">Step into the Future</h1>
+                <h2 class="text-3xl md:text-5xl font-bold mb-8 neon-text-purple">of VR & 3D Gaming.</h2>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-10 text-gray-300">
+                    We craft immersive virtual reality experiences, cutting-edge 3D applications, and unforgettable games that push the boundaries of technology.
+                </p>
+                <a href="#services" class="neon-button neon-button-cyan text-xl font-semibold py-3 px-8 rounded-lg">Explore Our Services</a>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 bg-[#0f0f28]">
+            <div class="container mx-auto px-6">
+                <h2 class="section-heading neon-text-cyan reveal-on-scroll">About Us</h2>
+                <p class="text-xl text-center max-w-3xl mx-auto mb-12 text-gray-300 reveal-on-scroll">
+                    We are a passionate team of developers, designers, and visionaries dedicated to exploring the limitless potential of virtual and augmented reality, 3D modeling, and interactive game design. Our mission is to build the next generation of digital experiences.
+                </p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="futuristic-card p-6 rounded-lg reveal-on-scroll">
+                        <h3 class="text-2xl font-bold mb-3 neon-text-purple">VR Development</h3>
+                        <p class="text-gray-400">Expertise in creating breathtaking VR applications for training, simulation, entertainment, and more. We leverage platforms like Oculus, HTC Vive, and Windows Mixed Reality.</p>
+                    </div>
+                    <div class="futuristic-card p-6 rounded-lg reveal-on-scroll" style="transition-delay: 0.1s;">
+                        <h3 class="text-2xl font-bold mb-3 neon-text-purple">3D Modeling & Animation</h3>
+                        <p class="text-gray-400">High-fidelity 3D asset creation, character design, environment modeling, and animation services for games, films, and interactive media.</p>
+                    </div>
+                    <div class="futuristic-card p-6 rounded-lg reveal-on-scroll" style="transition-delay: 0.2s;">
+                        <h3 class="text-2xl font-bold mb-3 neon-text-purple">Game Design & Development</h3>
+                        <p class="text-gray-400">From concept to launch, we design and develop engaging games across multiple platforms using engines like Unity and Unreal Engine.</p>
+                    </div>
+                     <div class="futuristic-card p-6 rounded-lg reveal-on-scroll" style="transition-delay: 0.3s;">
+                        <h3 class="text-2xl font-bold mb-3 neon-text-purple">Unreal Engine</h3>
+                        <p class="text-gray-400">Harnessing the power of Unreal Engine for photorealistic visuals and complex interactive systems in games and simulations.</p>
+                    </div>
+                     <div class="futuristic-card p-6 rounded-lg reveal-on-scroll" style="transition-delay: 0.4s;">
+                        <h3 class="text-2xl font-bold mb-3 neon-text-purple">Unity Experts</h3>
+                        <p class="text-gray-400">Developing versatile and cross-platform experiences with Unity, from mobile games to enterprise VR solutions.</p>
+                    </div>
+                     <div class="futuristic-card p-6 rounded-lg reveal-on-scroll" style="transition-delay: 0.5s;">
+                        <h3 class="text-2xl font-bold mb-3 neon-text-purple">WebXR Integration</h3>
+                        <p class="text-gray-400">Bringing immersive experiences directly to the web browser with WebXR, making VR/AR accessible to a wider audience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-heading neon-text-purple reveal-on-scroll">Our Portfolio</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div class="futuristic-card rounded-lg overflow-hidden reveal-on-scroll">
+                        <img src="https://placehold.co/600x400/0a0a1e/00ffff?text=VR+Galaxy+Explorer" alt="VR Galaxy Explorer" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 neon-text-cyan">VR Galaxy Explorer</h3>
+                            <p class="text-gray-400 mb-4">An immersive journey through space, allowing users to explore distant galaxies in stunning virtual reality.</p>
+                            <a href="#" class="neon-button neon-button-cyan text-sm py-2 px-4 rounded">View Project</a>
+                        </div>
+                    </div>
+                    <div class="futuristic-card rounded-lg overflow-hidden reveal-on-scroll" style="transition-delay: 0.1s;">
+                        <img src="https://placehold.co/600x400/0a0a1e/c000ff?text=Cyberpunk+Racer+3D" alt="Cyberpunk Racer 3D" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 neon-text-cyan">Cyberpunk Racer 3D</h3>
+                            <p class="text-gray-400 mb-4">A high-octane futuristic racing game with neon-drenched cityscapes and customizable vehicles.</p>
+                            <a href="#" class="neon-button neon-button-cyan text-sm py-2 px-4 rounded">View Project</a>
+                        </div>
+                    </div>
+                    <div class="futuristic-card rounded-lg overflow-hidden reveal-on-scroll" style="transition-delay: 0.2s;">
+                        <img src="https://placehold.co/600x400/0a0a1e/0077ff?text=Architectural+Viz+Pro" alt="Architectural Visualization Pro" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 neon-text-cyan">Architectural Viz Pro</h3>
+                            <p class="text-gray-400 mb-4">Interactive 3D walkthroughs for real estate, allowing clients to experience properties before construction.</p>
+                            <a href="#" class="neon-button neon-button-cyan text-sm py-2 px-4 rounded">View Project</a>
+                            </div>
+                    </div>
+                    </div>
+            </div>
+        </section>
+
+        <section id="services" class="py-20 bg-[#0f0f28]">
+            <div class="container mx-auto px-6">
+                <h2 class="section-heading neon-text-cyan reveal-on-scroll">Our Services</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+                    <div class="futuristic-card p-8 rounded-lg reveal-on-scroll">
+                        <div class="mb-4">
+                            <svg class="w-16 h-16 mx-auto text-[#00ffff]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 004.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 14.5M14.25 3.104c.251.023.501.05.75.082M19.8 14.5L16.5 17.75M19.8 14.5L22.5 12M19.8 14.5L16.5 11.25M5 14.5L7.5 17.75M5 14.5L2.25 12M5 14.5L7.5 11.25m0 0l3.75-3.75M7.5 11.25L3.75 7.5M7.5 11.25v2.25c0 .621.504 1.125 1.125 1.125h3.75c.621 0 1.125-.504 1.125-1.125V11.25m0 0l3.75 3.75M12 15V5.25m0 9.75c0 .414-.168.79-.468 1.06l-1.876 1.876c-.27.27-.628.414-.99.414H8.25c-.362 0-.72-.144-.99-.414L5.384 16.06A1.5 1.5 0 015.25 15v-2.25m6.75 2.25c0 .414.168.79.468 1.06l1.876 1.876c.27.27.628.414.99.414h1.875c.362 0 .72-.144.99-.414l1.876-1.876A1.5 1.5 0 0018.75 15v-2.25"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 neon-text-purple">VR App Development</h3>
+                        <p class="text-gray-400">Custom VR solutions tailored to your specific needs, from initial concept to deployment and support.</p>
+                    </div>
+                    <div class="futuristic-card p-8 rounded-lg reveal-on-scroll" style="transition-delay: 0.1s;">
+                         <div class="mb-4">
+                            <svg class="w-16 h-16 mx-auto text-[#00ffff]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 neon-text-purple">3D Asset Creation</h3>
+                        <p class="text-gray-400">High-quality, optimized 3D models, textures, and animations for games, simulations, and visualizations.</p>
+                    </div>
+                    <div class="futuristic-card p-8 rounded-lg reveal-on-scroll" style="transition-delay: 0.2s;">
+                        <div class="mb-4">
+                           <svg class="w-16 h-16 mx-auto text-[#00ffff]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.393-.03.79-.03 1.184 0 1.13.094 1.976 1.057 1.976 2.192V7.5M8.25 7.5h7.5M8.25 7.5c0 1.105-1.119 2.008-2.496 2.008H3.75c-1.376 0-2.496-.903-2.496-2.008V5.625c0-1.104 1.12-2.008 2.496-2.008h2.004c1.376 0 2.496.904 2.496 2.008v1.875zM15.75 7.5c0 1.105 1.119 2.008 2.496 2.008h2.004c1.376 0 2.496-.903 2.496-2.008V5.625c0-1.104-1.12-2.008-2.496-2.008h-2.004C16.87 3.617 15.75 4.52 15.75 5.625v1.875z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 neon-text-purple">Game Prototyping</h3>
+                        <p class="text-gray-400">Rapid prototyping services to quickly test game mechanics, concepts, and user experience before full-scale development.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-heading neon-text-purple reveal-on-scroll">From The Grid (Blog)</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div class="futuristic-card rounded-lg overflow-hidden reveal-on-scroll">
+                        <img src="https://placehold.co/600x400/0f0f28/00ffff?text=VR+Trends+2025" alt="Blog Post Image" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm text-[#00ffff] uppercase">VR Trends</span>
+                            <h3 class="text-2xl font-bold my-2 neon-text-cyan">The Future of Immersion: Top VR Trends in 2025</h3>
+                            <p class="text-gray-400 mb-4">Discover the latest advancements and predictions shaping the virtual reality landscape this year...</p>
+                            <a href="#" class="neon-button neon-button-cyan text-sm py-2 px-4 rounded">Read More</a>
+                        </div>
+                    </div>
+                    <div class="futuristic-card rounded-lg overflow-hidden reveal-on-scroll" style="transition-delay: 0.1s;">
+                        <img src="https://placehold.co/600x400/0f0f28/c000ff?text=3D+Tech+Deep+Dive" alt="Blog Post Image" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="text-sm text-[#c000ff] uppercase">3D Technology</span>
+                            <h3 class="text-2xl font-bold my-2 neon-text-cyan">Optimizing 3D Assets for Real-Time Performance</h3>
+                            <p class="text-gray-400 mb-4">A technical guide to creating stunning yet performant 3D models for games and VR applications...</p>
+                            <a href="#" class="neon-button neon-button-cyan text-sm py-2 px-4 rounded">Read More</a>
+                        </div>
+                    </div>
+                    <div class="futuristic-card rounded-lg overflow-hidden reveal-on-scroll" style="transition-delay: 0.2s;">
+                        <img src="https://placehold.co/600x400/0f0f28/0077ff?text=Game+Dev+Tips" alt="Blog Post Image" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                           <span class="text-sm text-[#0077ff] uppercase">Game Development</span>
+                            <h3 class="text-2xl font-bold my-2 neon-text-cyan">Indie Game Dev Insights: From Idea to Launch</h3>
+                            <p class="text-gray-400 mb-4">Tips and tricks for aspiring game developers looking to bring their creative visions to life...</p>
+                            <a href="#" class="neon-button neon-button-cyan text-sm py-2 px-4 rounded">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 bg-[#0a0a1e]">
+            <div class="container mx-auto px-6 relative z-10"> <h2 class="section-heading neon-text-cyan reveal-on-scroll">Connect With Us</h2>
+                <div class="max-w-2xl mx-auto futuristic-card p-8 md:p-12 rounded-lg reveal-on-scroll">
+                    <form action="#" method="POST">
+                        <div class="mb-6">
+                            <label for="name" class="block mb-2 text-lg text-[#00ffff]">Full Name</label>
+                            <input type="text" id="name" name="name" class="w-full p-3 rounded-md neon-input" placeholder="Your Name">
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block mb-2 text-lg text-[#00ffff]">Email Address</label>
+                            <input type="email" id="email" name="email" class="w-full p-3 rounded-md neon-input" placeholder="you@example.com">
+                        </div>
+                        <div class="mb-6">
+                            <label for="subject" class="block mb-2 text-lg text-[#00ffff]">Subject</label>
+                            <input type="text" id="subject" name="subject" class="w-full p-3 rounded-md neon-input" placeholder="Inquiry about VR Project">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block mb-2 text-lg text-[#00ffff]">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full p-3 rounded-md neon-input" placeholder="Tell us about your project or query..."></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="neon-button neon-button-purple text-xl font-semibold py-3 px-10 rounded-lg">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="mt-12 text-center reveal-on-scroll">
+                    <p class="text-lg mb-4 text-gray-300">Follow us on the Grid:</p>
+                    <div class="flex justify-center space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-[#00ffff] transition-colors duration-300" title="Twitter">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-[#00ffff] transition-colors duration-300" title="LinkedIn">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-[#00ffff] transition-colors duration-300" title="GitHub">
+                           <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.82c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.202 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.308.678.92.678 1.853 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-8 text-center bg-[#0a0a1e] border-t border-gray-700">
+        <p class="text-gray-500">&copy; <span id="currentYear"></span> FutureTech Industries. All rights reserved. Entering the Grid...</p>
+    </footer>
+
+    <script>
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- Three.js Hero Animation ---
+        let scene, camera, renderer, heroObject, customModel; // Added customModel variable
+
+        function initHeroAnimation() {
+            const canvas = document.getElementById('heroCanvas');
+            if (!canvas) {
+                console.error("Hero canvas not found");
+                return;le
+            }
+            
+            scene = new THREE.Scene();
+            
+            camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+            camera.position.z = 5; // Adjust as needed based on your model's scale
+
+            renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+            renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+
+            // --- Particle Effects (kept from original) ---
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCnt = 5000;
+            const posArray = new Float32Array(particlesCnt * 3);
+            for(let i = 0; i < particlesCnt * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 20; // Spread particles a bit wider
+            }
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.015,
+                color: 0x0077ff, 
+                transparent: true,
+                opacity: 0.6
+            });
+            const particleMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particleMesh);
+
+            // --- Load Custom OBJ Model ---
+            const loader = new THREE.OBJLoader();
+            const modelPath = '/lens.obj'; // IMPORTANT: Replace with the actual path to your OBJ file
+
+            loader.load(
+                modelPath,
+                // Called when resource is loaded
+                function (object) {
+                    customModel = object; // Store the loaded object
+
+                    // Style the loaded model (Tron aesthetic)
+                    customModel.traverse(function (child) {
+                        if (child instanceof THREE.Mesh) {
+                            child.material = new THREE.MeshBasicMaterial({
+                                color: 0x00ffff, // Cyan
+                                wireframe: true,
+                                transparent: true,
+                                opacity: 0.8 
+                            });
+                        }
+                    });
+
+                    // --- Adjust scale and position as needed for your model ---
+                    // Example: customModel.scale.set(0.5, 0.5, 0.5);
+                    // Example: customModel.position.y = -1; 
+                    // You might need to experiment with these values
+                    // To center the model, you can calculate its bounding box:
+                    const box = new THREE.Box3().setFromObject(customModel);
+                    const center = box.getCenter(new THREE.Vector3());
+                    customModel.position.sub(center); // Center the model at the origin
+
+                    scene.add(customModel);
+                    console.log('Custom OBJ model loaded successfully.');
+                },
+                // Called when loading is in progresses
+                function (xhr) {
+                    console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                },
+                // Called when loading has errors
+                function (error) {
+                    console.error('An error happened while loading the OBJ model:', error);
+                    // Fallback to the original TorusKnot if OBJ loading fails
+                    createFallbackObject();
+                }
+            );
+
+            // If you want to keep the original TorusKnot as a fallback or alongside:
+            // createFallbackObject(); // You can call this if OBJ loading fails or if you want both
+
+            animateHero();
+            window.addEventListener('resize', onWindowResize, false);
+        }
+
+        // Function to create the original TorusKnot as a fallback
+        function createFallbackObject() {
+            if (heroObject) scene.remove(heroObject); // Remove if it exists
+            const geometry = new THREE.TorusKnotGeometry(1.5, 0.3, 100, 16);
+            const material = new THREE.MeshBasicMaterial({ 
+                color: 0x00ffff,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.7
+            });
+            heroObject = new THREE.Mesh(geometry, material);
+            scene.add(heroObject);
+            console.log("Fallback TorusKnot created.");
+        }
+
+
+        function animateHero() {
+            requestAnimationFrame(animateHero);
+            // Animate the custom model if it's loaded
+            if (customModel) {
+                customModel.rotation.x += 0.002;
+                customModel.rotation.y += 0.003;
+            } 
+            // Animate the fallback object if it exists and customModel hasn't loaded
+            else if (heroObject) {
+                heroObject.rotation.x += 0.002;
+                heroObject.rotation.y += 0.003;
+            }
+            renderer.render(scene, camera);
+        }
+
+        function onWindowResize() {
+            const canvas = document.getElementById('heroCanvas');
+            if (canvas && camera && renderer) {
+                const heroSection = document.getElementById('home');
+                if (heroSection) {
+                    canvas.width = heroSection.clientWidth;
+                    canvas.height = heroSection.clientHeight;
+                    renderer.setSize(heroSection.clientWidth, heroSection.clientHeight);
+                    camera.aspect = heroSection.clientWidth / heroSection.clientHeight;
+                    camera.updateProjectionMatrix();
+                }
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initHeroAnimation();
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 }); 
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+        });
+
+    </script>
+</body>
+</html>
