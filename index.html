@@ -94,11 +94,34 @@
             border: 1px solid #0077ff; /* Neon blue border */
             backdrop-filter: blur(5px);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative; /* Added for video background positioning */
+            overflow: hidden; /* Ensure video doesn't spill out */
         }
         .futuristic-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 0 15px #0077ff, 0 0 30px #0077ff;
         }
+        .card-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the area, might crop */
+            z-index: 0; /* Behind content */
+            opacity: 0.4; /* Adjust for desired dimming */
+        }
+        .card-content-overlay {
+            position: relative;
+            z-index: 1; /* Above video */
+            background-color: rgba(10, 10, 30, 0.5); /* Slight overlay for text readability */
+            height: 100%; /* Ensure content area takes full height of card if needed */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Pushes button to bottom if card has fixed height */
+            padding: 1.5rem; /* Tailwind p-6, added directly here for consistency */
+        }
+
 
         /* Input field styling */
         .neon-input {
@@ -183,7 +206,7 @@
 
     <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-80 backdrop-blur-md bg-[#0a0a1e]/80 shadow-lg">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#home" class="text-3xl font-bold neon-text-cyan">Think More Now</a> 
+            <a href="#home" class="text-3xl font-bold neon-text-cyan">FutureTech</a> 
             <div class="hidden md:flex space-x-8 items-center">
                 <a href="#home" class="text-lg">Home</a>
                 <a href="#about" class="text-lg">About</a>
@@ -260,31 +283,43 @@
             <div class="container mx-auto px-6">
                 <h2 class="section-heading neon-text-purple reveal-on-scroll">Our Portfolio</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <div class="futuristic-card rounded-lg overflow-hidden reveal-on-scroll">
-                        <img src="https://placehold.co/600x400/0a0a1e/00ffff?text=VR+Galaxy+Explorer" alt="VR Galaxy Explorer" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a0a1e/cccccc?text=Image+Not+Found';">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2 neon-text-cyan">VR Galaxy Explorer</h3>
-                            <p class="text-gray-400 mb-4">An immersive journey through space, allowing users to explore distant galaxies in stunning virtual reality.</p>
-                            <a href="#" class="neon-button neon-button-cyan text-sm py-2 px-4 rounded">View Project</a>
-                        </div>
-                    </div>
-                    <div class="futuristic-card rounded-lg overflow-hidden reveal-on-scroll" style="transition-delay: 0.1s;">
-                        <img src="https://placehold.co/600x400/0a0a1e/c000ff?text=Cyberpunk+Racer+3D" alt="Cyberpunk Racer 3D" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a0a1e/cccccc?text=Image+Not+Found';">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2 neon-text-cyan">Cyberpunk Racer 3D</h3>
-                            <p class="text-gray-400 mb-4">A high-octane futuristic racing game with neon-drenched cityscapes and customizable vehicles.</p>
-                            <a href="#" class="neon-button neon-button-cyan text-sm py-2 px-4 rounded">View Project</a>
-                        </div>
-                    </div>
-                    <div class="futuristic-card rounded-lg overflow-hidden reveal-on-scroll" style="transition-delay: 0.2s;">
-                        <img src="https://placehold.co/600x400/0a0a1e/0077ff?text=Architectural+Viz+Pro" alt="Architectural Visualization Pro" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a0a1e/cccccc?text=Image+Not+Found';">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-bold mb-2 neon-text-cyan">Architectural Viz Pro</h3>
-                            <p class="text-gray-400 mb-4">Interactive 3D walkthroughs for real estate, allowing clients to experience properties before construction.</p>
-                            <a href="#" class="neon-button neon-button-cyan text-sm py-2 px-4 rounded">View Project</a>
+                    <div class="futuristic-card rounded-lg reveal-on-scroll"> 
+                        <video autoplay loop muted playsinline class="card-video-bg">
+                            <source src="https://ivanweinreb.github.io/thinkmorenow/assets/Blender_car_1.mp4" type="video/mp4"> 
+                            Your browser does not support the video tag. 
+                        </video>
+                        <div class="card-content-overlay"> 
+                            <div> 
+                                <h3 class="text-2xl font-bold mb-2 neon-text-cyan">2025 Demo Reel</h3> 
+                                <p class="text-gray-400 mb-4">A showcase of our latest and greatest projects from the past year.</p> 
                             </div>
+                            <a href="https://www.youtube.com/watch?v=odlt0kytuDk" target="_blank" class="neon-button neon-button-cyan text-sm py-2 px-4 rounded mt-auto">View Reel</a> 
+                        </div>
                     </div>
+                    <div class="futuristic-card rounded-lg reveal-on-scroll" style="transition-delay: 0.1s;"> 
+                        <video autoplay loop muted playsinline class="card-video-bg">
+                            <source src="https://ivanweinreb.github.io/thinkmorenow/assets/Blender_car.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="card-content-overlay"> 
+                            <div> 
+                                <h3 class="text-2xl font-bold mb-2 neon-text-cyan">Cyberpunk Racer 3D</h3>
+                                <p class="text-gray-400 mb-4">A high-octane futuristic racing game with neon-drenched cityscapes and customizable vehicles.</p>
+                            </div>
+                            <a href="#" class="neon-button neon-button-cyan text-sm py-2 px-4 rounded mt-auto">View Project</a>
+                        </div>
                     </div>
+                    <div class="futuristic-card rounded-lg reveal-on-scroll" style="transition-delay: 0.2s;"> 
+                        <img src="https://placehold.co/600x400/0a0a1e/0077ff?text=Architectural+Viz+Pro" alt="Architectural Visualization Pro" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a0a1e/cccccc?text=Image+Not+Found';">
+                         <div class="card-content-overlay">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-2 neon-text-cyan">Architectural Viz Pro</h3>
+                                <p class="text-gray-400 mb-4">Interactive 3D walkthroughs for real estate, allowing clients to experience properties before construction.</p>
+                            </div>
+                            <a href="#" class="neon-button neon-button-cyan text-sm py-2 px-4 rounded mt-auto">View Project</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -313,6 +348,17 @@
                         <h3 class="text-2xl font-bold mb-3 neon-text-purple">Game Prototyping</h3>
                         <p class="text-gray-400">Rapid prototyping services to quickly test game mechanics, concepts, and user experience before full-scale development.</p>
                     </div>
+
+                    <div class="futuristic-card p-8 rounded-lg reveal-on-scroll md:col-span-2 lg:col-span-3" style="transition-delay: 0.3s;">
+                        <div class="mb-4 w-full h-48 md:h-56 rounded-lg overflow-hidden relative mx-auto max-w-lg shadow-lg neon-border-cyan"> 
+                            <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+                                <source src="https://ivanweinreb.github.io/thinkmorenow/assets/Blender_car_1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3 neon-text-purple">Environment Creation</h3>
+                        <p class="text-gray-400">Crafting immersive and detailed 3D environments using Blender and other cutting-edge tools for games, simulations, and virtual experiences.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -321,31 +367,37 @@
             <div class="container mx-auto px-6">
                 <h2 class="section-heading neon-text-purple reveal-on-scroll">From The Grid (Blog)</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <div class="futuristic-card rounded-lg overflow-hidden reveal-on-scroll">
+                    <div class="futuristic-card rounded-lg reveal-on-scroll"> 
                         <img src="https://placehold.co/600x400/0f0f28/00ffff?text=VR+Trends+2025" alt="Blog Post Image" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f0f28/cccccc?text=Image+Not+Found';">
-                        <div class="p-6">
-                            <span class="text-sm text-[#00ffff] uppercase">VR Trends</span>
-                            <h3 class="text-2xl font-bold my-2 neon-text-cyan">The Future of Immersion: Top VR Trends in 2025</h3>
-                            <p class="text-gray-400 mb-4">Discover the latest advancements and predictions shaping the virtual reality landscape this year...</p>
-                            <a href="#" class="neon-button neon-button-cyan text-sm py-2 px-4 rounded">Read More</a>
+                        <div class="card-content-overlay">
+                           <div>
+                                <span class="text-sm text-[#00ffff] uppercase">VR Trends</span>
+                                <h3 class="text-2xl font-bold my-2 neon-text-cyan">The Future of Immersion: Top VR Trends in 2025</h3>
+                                <p class="text-gray-400 mb-4">Discover the latest advancements and predictions shaping the virtual reality landscape this year...</p>
+                            </div>
+                            <a href="#" class="neon-button neon-button-cyan text-sm py-2 px-4 rounded mt-auto">Read More</a>
                         </div>
                     </div>
-                    <div class="futuristic-card rounded-lg overflow-hidden reveal-on-scroll" style="transition-delay: 0.1s;">
+                    <div class="futuristic-card rounded-lg reveal-on-scroll" style="transition-delay: 0.1s;"> 
                         <img src="https://placehold.co/600x400/0f0f28/c000ff?text=3D+Tech+Deep+Dive" alt="Blog Post Image" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f0f28/cccccc?text=Image+Not+Found';">
-                        <div class="p-6">
-                            <span class="text-sm text-[#c000ff] uppercase">3D Technology</span>
-                            <h3 class="text-2xl font-bold my-2 neon-text-cyan">Optimizing 3D Assets for Real-Time Performance</h3>
-                            <p class="text-gray-400 mb-4">A technical guide to creating stunning yet performant 3D models for games and VR applications...</p>
-                            <a href="#" class="neon-button neon-button-cyan text-sm py-2 px-4 rounded">Read More</a>
+                        <div class="card-content-overlay">
+                            <div>
+                                <span class="text-sm text-[#c000ff] uppercase">3D Technology</span>
+                                <h3 class="text-2xl font-bold my-2 neon-text-cyan">Optimizing 3D Assets for Real-Time Performance</h3>
+                                <p class="text-gray-400 mb-4">A technical guide to creating stunning yet performant 3D models for games and VR applications...</p>
+                            </div>
+                            <a href="#" class="neon-button neon-button-cyan text-sm py-2 px-4 rounded mt-auto">Read More</a>
                         </div>
                     </div>
-                    <div class="futuristic-card rounded-lg overflow-hidden reveal-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="futuristic-card rounded-lg reveal-on-scroll" style="transition-delay: 0.2s;"> 
                         <img src="https://placehold.co/600x400/0f0f28/0077ff?text=Game+Dev+Tips" alt="Blog Post Image" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f0f28/cccccc?text=Image+Not+Found';">
-                        <div class="p-6">
-                           <span class="text-sm text-[#0077ff] uppercase">Game Development</span>
-                            <h3 class="text-2xl font-bold my-2 neon-text-cyan">Indie Game Dev Insights: From Idea to Launch</h3>
-                            <p class="text-gray-400 mb-4">Tips and tricks for aspiring game developers looking to bring their creative visions to life...</p>
-                            <a href="#" class="neon-button neon-button-cyan text-sm py-2 px-4 rounded">Read More</a>
+                        <div class="card-content-overlay">
+                           <div>
+                               <span class="text-sm text-[#0077ff] uppercase">Game Development</span>
+                                <h3 class="text-2xl font-bold my-2 neon-text-cyan">Indie Game Dev Insights: From Idea to Launch</h3>
+                                <p class="text-gray-400 mb-4">Tips and tricks for aspiring game developers looking to bring their creative visions to life...</p>
+                            </div>
+                            <a href="#" class="neon-button neon-button-cyan text-sm py-2 px-4 rounded mt-auto">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -396,7 +448,7 @@
     </main>
 
     <footer class="py-8 text-center bg-[#0a0a1e] border-t border-gray-700">
-        <p class="text-gray-500">&copy; <span id="currentYear"></span> FutureTech Industries. All rights reserved. Entering the Grid...</p>
+        <p class="text-gray-500">© <span id="currentYear"></span> FutureTech Industries. All rights reserved. Entering the Grid...</p>
     </footer>
 
     <script>
