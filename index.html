@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FutureTech - VR & 3D Development</title>
+    <title>Think More Now</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <style>
         body {
             font-family: 'Orbitron', sans-serif;
@@ -148,7 +148,7 @@
             width: 100%;
             height: 100%;
             z-index: 0; /* Behind hero content but above background */
-            opacity: 0.7; /* Slightly increased opacity for better visibility of custom model */
+            opacity: 0.7; 
         }
         
         /* Scrollbar styling (optional, for a more thematic look) */
@@ -183,7 +183,7 @@
 
     <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-80 backdrop-blur-md bg-[#0a0a1e]/80 shadow-lg">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#home" class="text-3xl font-bold neon-text-cyan">FutureTech</a>
+            <a href="#home" class="text-3xl font-bold neon-text-cyan">Think More Now</a> 
             <div class="hidden md:flex space-x-8 items-center">
                 <a href="#home" class="text-lg">Home</a>
                 <a href="#about" class="text-lg">About</a>
@@ -261,7 +261,7 @@
                 <h2 class="section-heading neon-text-purple reveal-on-scroll">Our Portfolio</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                     <div class="futuristic-card rounded-lg overflow-hidden reveal-on-scroll">
-                        <img src="https://placehold.co/600x400/0a0a1e/00ffff?text=VR+Galaxy+Explorer" alt="VR Galaxy Explorer" class="w-full h-48 object-cover">
+                        <img src="https://placehold.co/600x400/0a0a1e/00ffff?text=VR+Galaxy+Explorer" alt="VR Galaxy Explorer" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a0a1e/cccccc?text=Image+Not+Found';">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold mb-2 neon-text-cyan">VR Galaxy Explorer</h3>
                             <p class="text-gray-400 mb-4">An immersive journey through space, allowing users to explore distant galaxies in stunning virtual reality.</p>
@@ -269,7 +269,7 @@
                         </div>
                     </div>
                     <div class="futuristic-card rounded-lg overflow-hidden reveal-on-scroll" style="transition-delay: 0.1s;">
-                        <img src="https://placehold.co/600x400/0a0a1e/c000ff?text=Cyberpunk+Racer+3D" alt="Cyberpunk Racer 3D" class="w-full h-48 object-cover">
+                        <img src="https://placehold.co/600x400/0a0a1e/c000ff?text=Cyberpunk+Racer+3D" alt="Cyberpunk Racer 3D" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a0a1e/cccccc?text=Image+Not+Found';">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold mb-2 neon-text-cyan">Cyberpunk Racer 3D</h3>
                             <p class="text-gray-400 mb-4">A high-octane futuristic racing game with neon-drenched cityscapes and customizable vehicles.</p>
@@ -277,7 +277,7 @@
                         </div>
                     </div>
                     <div class="futuristic-card rounded-lg overflow-hidden reveal-on-scroll" style="transition-delay: 0.2s;">
-                        <img src="https://placehold.co/600x400/0a0a1e/0077ff?text=Architectural+Viz+Pro" alt="Architectural Visualization Pro" class="w-full h-48 object-cover">
+                        <img src="https://placehold.co/600x400/0a0a1e/0077ff?text=Architectural+Viz+Pro" alt="Architectural Visualization Pro" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0a0a1e/cccccc?text=Image+Not+Found';">
                         <div class="p-6">
                             <h3 class="text-2xl font-bold mb-2 neon-text-cyan">Architectural Viz Pro</h3>
                             <p class="text-gray-400 mb-4">Interactive 3D walkthroughs for real estate, allowing clients to experience properties before construction.</p>
@@ -322,7 +322,7 @@
                 <h2 class="section-heading neon-text-purple reveal-on-scroll">From The Grid (Blog)</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                     <div class="futuristic-card rounded-lg overflow-hidden reveal-on-scroll">
-                        <img src="https://placehold.co/600x400/0f0f28/00ffff?text=VR+Trends+2025" alt="Blog Post Image" class="w-full h-48 object-cover">
+                        <img src="https://placehold.co/600x400/0f0f28/00ffff?text=VR+Trends+2025" alt="Blog Post Image" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f0f28/cccccc?text=Image+Not+Found';">
                         <div class="p-6">
                             <span class="text-sm text-[#00ffff] uppercase">VR Trends</span>
                             <h3 class="text-2xl font-bold my-2 neon-text-cyan">The Future of Immersion: Top VR Trends in 2025</h3>
@@ -331,7 +331,7 @@
                         </div>
                     </div>
                     <div class="futuristic-card rounded-lg overflow-hidden reveal-on-scroll" style="transition-delay: 0.1s;">
-                        <img src="https://placehold.co/600x400/0f0f28/c000ff?text=3D+Tech+Deep+Dive" alt="Blog Post Image" class="w-full h-48 object-cover">
+                        <img src="https://placehold.co/600x400/0f0f28/c000ff?text=3D+Tech+Deep+Dive" alt="Blog Post Image" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f0f28/cccccc?text=Image+Not+Found';">
                         <div class="p-6">
                             <span class="text-sm text-[#c000ff] uppercase">3D Technology</span>
                             <h3 class="text-2xl font-bold my-2 neon-text-cyan">Optimizing 3D Assets for Real-Time Performance</h3>
@@ -340,7 +340,7 @@
                         </div>
                     </div>
                     <div class="futuristic-card rounded-lg overflow-hidden reveal-on-scroll" style="transition-delay: 0.2s;">
-                        <img src="https://placehold.co/600x400/0f0f28/0077ff?text=Game+Dev+Tips" alt="Blog Post Image" class="w-full h-48 object-cover">
+                        <img src="https://placehold.co/600x400/0f0f28/0077ff?text=Game+Dev+Tips" alt="Blog Post Image" class="w-full h-48 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0f0f28/cccccc?text=Image+Not+Found';">
                         <div class="p-6">
                            <span class="text-sm text-[#0077ff] uppercase">Game Development</span>
                             <h3 class="text-2xl font-bold my-2 neon-text-cyan">Indie Game Dev Insights: From Idea to Launch</h3>
@@ -414,30 +414,30 @@
         });
 
         // --- Three.js Hero Animation ---
-        let scene, camera, renderer, heroObject, customModel; // Added customModel variable
+        let scene, camera, renderer, heroObject, customModel; 
 
         function initHeroAnimation() {
             const canvas = document.getElementById('heroCanvas');
             if (!canvas) {
                 console.error("Hero canvas not found");
-                return;le
+                return;
             }
             
             scene = new THREE.Scene();
             
             camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
-            camera.position.z = 5; // Adjust as needed based on your model's scale
+            camera.position.z = 5; 
 
             renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
             renderer.setSize(canvas.clientWidth, canvas.clientHeight);
             renderer.setPixelRatio(window.devicePixelRatio);
 
-            // --- Particle Effects (kept from original) ---
+            // --- Particle Effects ---
             const particlesGeometry = new THREE.BufferGeometry();
             const particlesCnt = 5000;
             const posArray = new Float32Array(particlesCnt * 3);
             for(let i = 0; i < particlesCnt * 3; i++) {
-                posArray[i] = (Math.random() - 0.5) * 20; // Spread particles a bit wider
+                posArray[i] = (Math.random() - 0.5) * 20; 
             }
             particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
             const particlesMaterial = new THREE.PointsMaterial({
@@ -449,39 +449,38 @@
             const particleMesh = new THREE.Points(particlesGeometry, particlesMaterial);
             scene.add(particleMesh);
 
-            // --- Load Custom OBJ Model ---
-            const loader = new THREE.OBJLoader();
-            const modelPath = '/lens.obj'; // IMPORTANT: Replace with the actual path to your OBJ file
+            // --- Load Custom GLB Model ---
+            const loader = new THREE.GLTFLoader(); 
+            const modelPath = 'https://ivanweinreb.github.io/thinkmorenow/assets/lens.glb'; 
 
             loader.load(
                 modelPath,
                 // Called when resource is loaded
-                function (object) {
-                    customModel = object; // Store the loaded object
+                function (gltf) {
+                    customModel = gltf.scene; 
 
-                    // Style the loaded model (Tron aesthetic)
-                    customModel.traverse(function (child) {
-                        if (child instanceof THREE.Mesh) {
-                            child.material = new THREE.MeshBasicMaterial({
-                                color: 0x00ffff, // Cyan
-                                wireframe: true,
-                                transparent: true,
-                                opacity: 0.8 
-                            });
-                        }
+                    const wireframeMaterial = new THREE.MeshBasicMaterial({
+                        color: 0x00ffff, 
+                        wireframe: true,
+                        transparent: true,
+                        opacity: 0.8 
                     });
 
-                    // --- Adjust scale and position as needed for your model ---
-                    // Example: customModel.scale.set(0.5, 0.5, 0.5);
-                    // Example: customModel.position.y = -1; 
-                    // You might need to experiment with these values
-                    // To center the model, you can calculate its bounding box:
+                    customModel.traverse(function (child) {
+                        if (child.isMesh) { 
+                            child.material = wireframeMaterial;
+                        }
+                    });
+                    
+                    // Scale the model to half its size
+                    customModel.scale.set(0.5, 0.5, 0.5); 
+
                     const box = new THREE.Box3().setFromObject(customModel);
                     const center = box.getCenter(new THREE.Vector3());
-                    customModel.position.sub(center); // Center the model at the origin
+                    customModel.position.sub(center); 
 
                     scene.add(customModel);
-                    console.log('Custom OBJ model loaded successfully.');
+                    console.log('Custom GLB model loaded successfully from: ' + modelPath);
                 },
                 // Called when loading is in progresses
                 function (xhr) {
@@ -489,14 +488,10 @@
                 },
                 // Called when loading has errors
                 function (error) {
-                    console.error('An error happened while loading the OBJ model:', error);
-                    // Fallback to the original TorusKnot if OBJ loading fails
+                    console.error('An error happened while loading the GLB model from ' + modelPath + ':', error);
                     createFallbackObject();
                 }
             );
-
-            // If you want to keep the original TorusKnot as a fallback or alongside:
-            // createFallbackObject(); // You can call this if OBJ loading fails or if you want both
 
             animateHero();
             window.addEventListener('resize', onWindowResize, false);
@@ -504,7 +499,8 @@
 
         // Function to create the original TorusKnot as a fallback
         function createFallbackObject() {
-            if (heroObject) scene.remove(heroObject); // Remove if it exists
+            if (heroObject) scene.remove(heroObject); 
+            if (customModel) scene.remove(customModel); 
             const geometry = new THREE.TorusKnotGeometry(1.5, 0.3, 100, 16);
             const material = new THREE.MeshBasicMaterial({ 
                 color: 0x00ffff,
@@ -520,13 +516,11 @@
 
         function animateHero() {
             requestAnimationFrame(animateHero);
-            // Animate the custom model if it's loaded
             if (customModel) {
                 customModel.rotation.x += 0.002;
                 customModel.rotation.y += 0.003;
             } 
-            // Animate the fallback object if it exists and customModel hasn't loaded
-            else if (heroObject) {
+            else if (heroObject) { 
                 heroObject.rotation.x += 0.002;
                 heroObject.rotation.y += 0.003;
             }
