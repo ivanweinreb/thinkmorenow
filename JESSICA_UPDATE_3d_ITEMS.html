@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal Update for Arcadian Manufacturers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .swoop-arrow {
+            position: relative;
+        }
+        .swoop-arrow::after {
+            content: '';
+            position: absolute;
+            right: -3rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2rem;
+            height: 2rem;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 text-slate-400"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" /></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.5;
+        }
+         @media (max-width: 1024px) {
+            .swoop-arrow::after {
+                transform: rotate(90deg) translateX(50%);
+                top: auto;
+                bottom: -3rem;
+                left: 50%;
+                right: auto;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="max-w-5xl mx-auto p-4 md:p-8">
+
+        <!-- Header -->
+        <header class="mb-8 md:mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900">Proposal Update</h1>
+            <p class="text-lg text-slate-600 mt-2">A Proposal for <span class="font-semibold text-slate-700">ARCADIAN MANUFACTURERS</span></p>
+        </header>
+
+        <!-- Explanatory Text -->
+        <div class="bg-white p-6 rounded-xl shadow-sm mb-8 md:mb-12 border border-slate-200">
+            <h2 class="text-xl font-semibold text-slate-900 mb-4">Subject: Update on your project & opportunity for 3D modeling</h2>
+            <div class="space-y-4 text-slate-700">
+                <p>
+                    Hi Jessica,
+                </p>
+                <p>
+                    I'm writing in follow-up to our project for the 8 plans. I understand there's a new requirement from your final client for 3D models of the door components, and I'm happy to help.
+                </p>
+                <p>
+                    3D modeling is a more detailed process than 2D drafting, so it falls outside our original quote as an <strong class="text-slate-900">additional service</strong>. However, this presents a great opportunity. Instead of just modeling these parts for a single use, I propose creating a permanent 3D asset library for you.
+                </p>
+                <p>
+                    This is a <strong class="text-slate-900">one-time investment</strong>. Once we create these models, they become your property. For any future plans or proposals we work on, we can include stunning, detailed 3D views of your products at <strong class="text-slate-900">no additional modeling cost</strong>, adding significant value and clarity for your clients.
+                </p>
+                <p>
+                    Below is a breakdown of the updated proposal. Please let me know if you have any questions!
+                </p>
+                <p>
+                    Best,<br>
+                    Ivan Weinreb
+                </p>
+            </div>
+        </div>
+
+        <!-- Graphical Breakdown -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-center">
+
+            <!-- Step 1: Current Project -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col swoop-arrow">
+                <div class="mb-4">
+                    <div class="bg-slate-100 text-slate-600 inline-block px-3 py-1 rounded-full text-sm font-semibold">
+                        Phase 1: Original Scope
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold text-slate-900 mb-2">2D Plan Creation</h3>
+                <p class="text-slate-600 mb-4 flex-grow">The initial agreed-upon work for the time-sensitive delivery of 8 detailed plans.</p>
+                <div class="text-left bg-slate-50 rounded-lg p-4 mb-4 text-sm">
+                    <p class="flex justify-between"><span>8 x 2D Plans</span> <span>$400.00</span></p>
+                    <p class="flex justify-between"><span>Rush Delivery</span> <span>$50.00</span></p>
+                </div>
+                <div class="bg-slate-800 text-white p-4 rounded-lg">
+                    <p class="text-sm opacity-80">Original Total</p>
+                    <p class="text-3xl font-bold">$450.00</p>
+                </div>
+            </div>
+
+            <!-- Step 2: 3D Investment -->
+            <div class="bg-white p-6 rounded-xl shadow-lg border-2 border-indigo-500 flex flex-col swoop-arrow">
+                 <div class="mb-4">
+                    <div class="bg-indigo-100 text-indigo-600 inline-block px-3 py-1 rounded-full text-sm font-semibold">
+                        Phase 2: Additional Scope
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold text-slate-900 mb-2">3D Asset Library</h3>
+                <p class="text-slate-600 mb-4 flex-grow">A one-time creation of a high-quality 3D model library for your components, limited to 10 unique items.</p>
+                <div class="text-left bg-indigo-50 rounded-lg p-4 mb-4 text-sm">
+                   <!-- IMPORTANT: Change this value to your desired price -->
+                    <p class="flex justify-between"><span>3D Modeling (10 items)</span> <span>$400.00</span></p>
+                </div>
+                <div class="bg-indigo-500 text-white p-4 rounded-lg">
+                    <p class="text-sm opacity-80">Additional Cost</p>
+                    <!-- IMPORTANT: This is the placeholder price. Change it to what you want to charge. -->
+                    <p class="text-3xl font-bold">+$400.00</p>
+                </div>
+            </div>
+
+            <!-- Step 3: Future Value -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col">
+                 <div class="mb-4">
+                    <div class="bg-emerald-100 text-emerald-600 inline-block px-3 py-1 rounded-full text-sm font-semibold">
+                        Future Value
+                    </div>
+                </div>
+                <h3 class="text-xl font-semibold text-slate-900 mb-2">Enhanced Future Plans</h3>
+                <p class="text-slate-600 mb-4 flex-grow">You own the 3D library. Use these assets in all future plans for more impressive proposals at no extra modeling cost.</p>
+                <div class="text-left bg-emerald-50 rounded-lg p-4 mb-4 text-sm">
+                    <p class="flex justify-between"><span>Future use of 10 models</span> <span class="font-semibold text-emerald-700">Included</span></p>
+                </div>
+                <div class="bg-emerald-500 text-white p-4 rounded-lg">
+                    <p class="text-sm opacity-80">Future Modeling Cost</p>
+                    <p class="text-3xl font-bold">$0.00</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Final Total -->
+        <div class="mt-8 md:mt-12 pt-8 border-t border-slate-200 text-center">
+            <p class="text-lg text-slate-600">Updated Project Total</p>
+            <p class="text-5xl font-bold text-slate-900 tracking-tight mt-2">$850.00</p>
+            <p class="text-sm text-slate-500 mt-2">( $450 Original Quote + $400 3D Library )</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
