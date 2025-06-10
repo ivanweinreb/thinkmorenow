@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Chimera: An Interactive VR Experience</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+        body {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 0;
+            border-bottom: 1px solid #333;
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            margin: 0;
+            letter-spacing: 2px;
+            color: #00aaff;
+            text-shadow: 0 0 15px rgba(0, 170, 255, 0.5);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+
+        .phase {
+            padding: 3rem 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .phase h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: #00aaff;
+            margin-bottom: 1rem;
+        }
+
+        .phase ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .phase li {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .phase .details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .budget-summary {
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .budget-summary h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: #00aaff;
+            margin-bottom: 2rem;
+        }
+
+        .budget-summary table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+
+        .budget-summary th, .budget-summary td {
+            padding: 1rem;
+            border: 1px solid #333;
+        }
+
+        .budget-summary th {
+            background-color: #222;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Project Chimera</h1>
+            <p>An Interactive VR Experience for the Modern Automotive Concessionary</p>
+        </header>
+
+        <section class="phase" id="phase1">
+            <h2>Phase 1: The Digital Twin</h2>
+            <ul>
+                <li>High-Fidelity 3D Vehicle Modeling</li>
+                <li>Photorealistic Texturing and Material Definition</li>
+                <li>Studio Lighting and Scene Setup</li>
+            </ul>
+            <div class="details">
+                <span>Estimated Timeline: 3-4 Weeks</span>
+                <span>Budget: €3,500</span>
+            </div>
+        </section>
+
+        <section class="phase" id="phase2">
+            <h2>Phase 2: The Kinetic Sculpture</h2>
+            <ul>
+                <li>Large-Format 1:10 Scale 3D Printed Model</li>
+                <li>Custom Motorized Turntable Pedestal</li>
+                <li>Arduino-Controlled Custom Lighting & Movement</li>
+            </ul>
+            <div class="details">
+                <span>Estimated Timeline: 3-4 Weeks</span>
+                <span>Budget: €4,200</span>
+            </div>
+        </section>
+
+        <section class="phase" id="phase3">
+            <h2>Phase 3: The Cinematic Showcase</h2>
+            <ul>
+                <li>4K Cinematic Animation (60 seconds)</li>
+                <li>Unreal Engine Interactive Configurator</li>
+            </ul>
+            <div class="details">
+                <span>Estimated Timeline: 6-8 Weeks</span>
+                <span>Budget: €12,000</span>
+            </div>
+        </section>
+
+        <section class="phase" id="phase4">
+            <h2>Phase 4: The Ultimate Immersion</h2>
+            <ul>
+                <li>Immersive 15-Minute VR Driving Environment</li>
+                <li>Custom VR Simulator Cockpit with Fanatec Components</li>
+                <li>On-Site Installation and Calibration</li>
+            </ul>
+            <div class="details">
+                <span>Estimated Timeline: 10-12 Weeks</span>
+                <span>Budget: €35,000+</span>
+            </div>
+        </section>
+
+        <section class="budget-summary">
+            <h2>Budget Summary</h2>
+            <table>
+                <tr>
+                    <th>Phase</th>
+                    <th>Description</th>
+                    <th>Budget (EUR)</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>High-Fidelity Vehicle Modeling & Renders</td>
+                    <td>€3,500</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Large Scale Model & Motorized Pedestal</td>
+                    <td>€4,200</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>4K Cinematic Video & Interactive Configurator</td>
+                    <td>€12,000</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Custom VR Driving Experience & Station</td>
+                    <td>€35,000+</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><strong>Total Estimated Budget</strong></td>
+                    <td><strong>€54,700+</strong></td>
+                </tr>
+            </table>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 [Oriantech]. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
