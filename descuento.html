@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa de Lealtad | Weincraft</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: -webkit-linear-gradient(#00d1ff, #0084ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-bg {
+            background-color: #111827;
+            background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0);
+            background-size: 2rem 2rem;
+        }
+        .card-glow:hover {
+            box-shadow: 0 0 40px rgba(0, 194, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-300">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <!-- Header -->
+        <header class="text-center my-12">
+             <img src="https://storage.googleapis.com/agent-tools-public-content/WEINCRAFT%20NEWflat.png" alt="Logo de Weincraft" class="h-20 md:h-24 mx-auto">
+        </header>
+
+        <!-- Hero Section -->
+        <section class="text-center py-16 md:py-20">
+            <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-4">Valoramos nuestra Alianza</h1>
+            <h2 class="text-2xl md:text-4xl font-bold gradient-text">Programa de Lealtad para Clientes Regulares</h2>
+            <p class="max-w-3xl mx-auto mt-8 text-gray-400">
+                Creemos que las mejores colaboraciones se construyen a largo plazo. La confianza, el entendimiento mutuo y la eficiencia crecen con cada proyecto. Como agradecimiento por su continua confianza en Weincraft, hemos creado un programa para recompensar a nuestros socios estratégicos.
+            </p>
+        </section>
+
+        <!-- Discount Section -->
+        <section class="my-16">
+            <div class="bg-gray-800 p-10 rounded-2xl border border-cyan-500/30 hero-bg text-center transition-all duration-300 card-glow">
+                <h3 class="text-xl font-bold text-white mb-4">Beneficio Exclusivo para Clientes Recurrentes</h3>
+                <p class="text-gray-400 mb-6">A partir de su segundo proyecto con nosotros, usted recibe automáticamente:</p>
+                <p class="text-7xl md:text-8xl font-black text-white my-4">35%</p>
+                <p class="text-4xl font-bold gradient-text">de Descuento</p>
+                <p class="text-gray-400 mt-6 max-w-xl mx-auto">
+                    Este descuento se aplicará sobre el valor total de la mano de obra en todos los futuros proyectos. Es nuestra manera de decir "gracias" y de invertir en una alianza de éxito mutuo.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- Why it works Section -->
+        <section class="my-16 md:my-24">
+            <h2 class="text-3xl font-bold text-center text-white mb-12">Ventajas de una Colaboración Continua</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="bg-gray-800/50 p-8 rounded-lg">
+                    <div class="text-4xl mb-4">🚀</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Mayor Agilidad</h3>
+                    <p class="text-gray-400">Ya conocemos su marca, sus estándares y sus expectativas. Esto nos permite arrancar proyectos más rápido y con menos fricción.</p>
+                </div>
+                <div class="bg-gray-800/50 p-8 rounded-lg">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Resultados Alineados</h3>
+                    <p class="text-gray-400">Entendemos sus objetivos a un nivel más profundo, lo que se traduce en un producto final más estratégico y efectivo.</p>
+                </div>
+                <div class="bg-gray-800/50 p-8 rounded-lg">
+                    <div class="text-4xl mb-4">📈</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Valor Acumulativo</h3>
+                    <p class="text-gray-400">Cada proyecto construye sobre el anterior, creando un ecosistema de activos digitales que podemos reutilizar y adaptar, ahorrándole tiempo y dinero.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center pt-8 mt-12 border-t border-gray-800">
+            <p class="text-gray-500">Gracias por ser un socio valioso.</p>
+            <p class="text-gray-600">Ivan Weinreb | Weincraft</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
