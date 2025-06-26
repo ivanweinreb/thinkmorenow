@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Status Report: VR Training Scenarios</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap');
+
+        body {
+            font-family: 'Share Tech Mono', monospace; /* More techy font */
+            background: linear-gradient(135deg, #0A0A0A 0%, #1A1A2A 100%);
+            color: #E0E0E0;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+        .report-container {
+            width: 100%;
+            max-width: 950px;
+            background-color: #151525;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 200, 255, 0.2), 0 0 80px rgba(0, 200, 255, 0.1);
+            border: 2px solid #00C8FF; /* Neon border */
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out;
+        }
+        .report-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0,200,255,0.05) 0%, transparent 70%);
+            animation: backgroundPulse 10s infinite alternate;
+            z-index: -1;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-family: 'Orbitron', sans-serif; /* Futuristic title font */
+            font-size: 3.2em;
+            color: #00C8FF; /* Bright neon blue */
+            margin: 0;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(0, 200, 255, 0.8), 0 0 30px rgba(0, 200, 255, 0.4);
+            line-height: 1.2;
+        }
+        .header p {
+            font-size: 1.1em;
+            color: #99EEFF;
+            margin-top: 15px;
+            text-shadow: 0 0 5px rgba(153, 238, 255, 0.3);
+        }
+        .info-section {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            padding: 15px 0;
+            border-top: 1px dashed #005F7F;
+            border-bottom: 1px dashed #005F7F;
+        }
+        .info-block {
+            text-align: center;
+            padding: 0 20px;
+        }
+        .info-block h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3em;
+            color: #00C8FF;
+            margin-bottom: 8px;
+            text-shadow: 0 0 5px rgba(0, 200, 255, 0.5);
+        }
+        .info-block p {
+            font-size: 1em;
+            color: #E0E0E0;
+            margin: 0;
+        }
+        .info-block ul {
+            list-style: none;
+            padding: 0;
+            margin: 5px 0 0;
+        }
+        .info-block ul li {
+            font-size: 0.95em;
+            color: #B0B0B0;
+            margin-bottom: 3px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            background-color: #0A0A1A;
+            border-radius: 15px;
+            height: 40px;
+            margin: 40px 0;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 10px rgba(0, 200, 255, 0.3), 0 0 15px rgba(0, 200, 255, 0.2);
+            border: 1px solid #00C8FF;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            width: 40%; /* Adjusted for 10 steps, 4/10 = 40% */
+            background: linear-gradient(90deg, #00C8FF 0%, #00FFC8 100%); /* Green-blue gradient */
+            border-radius: 15px;
+            transition: width 1s ease-in-out;
+            position: relative;
+            display: flex; /* Use flexbox to align content */
+            align-items: center; /* Vertically center content */
+            box-sizing: border-box;
+            box-shadow: 0 0 10px rgba(0, 255, 200, 0.7);
+        }
+
+        .progress-percentage { /* New class for percentage on the left */
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 20px; /* Align to the left */
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            z-index: 1; /* Ensure it's above the fill */
+        }
+
+        .phase-title { /* New class for phase title on the right */
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 20px; /* Align to the right */
+            color: #E0E0E0; /* Lighter color for visibility on dark background */
+            font-weight: bold;
+            font-size: 1.2em; /* Adjusted size */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            white-space: nowrap; /* Prevent wrapping */
+            overflow: hidden; /* Hide overflow if text is too long */
+            text-overflow: ellipsis; /* Add ellipsis if text is too long */
+            max-width: calc(100% - 150px); /* Max width to prevent overlapping with percentage */
+            z-index: 1; /* Ensure it's above the fill */
+        }
+
+        .status-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .status-item {
+            display: flex;
+            align-items: flex-start; /* Align to top for multi-line descriptions */
+            padding: 20px 0;
+            border-bottom: 1px solid #003F5F; /* Subtle separator */
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .status-item:last-child {
+            border-bottom: none;
+        }
+        .status-item:hover {
+            background-color: rgba(0, 200, 255, 0.05);
+            transform: translateX(5px);
+        }
+        .status-item.completed .status-icon {
+            background-color: #00FFC8; /* Bright green */
+            border: 2px solid #00FFC8;
+            box-shadow: 0 0 10px rgba(0, 255, 200, 0.7);
+        }
+        .status-item.current .status-icon {
+            background-color: #00C8FF; /* Bright blue */
+            border: 2px solid #00C8FF;
+            animation: pulse 1.5s infinite;
+            box-shadow: 0 0 10px rgba(0, 200, 255, 0.7);
+        }
+        .status-item.pending .status-icon {
+            background-color: transparent;
+            border: 2px solid #005F7F;
+            box-shadow: inset 0 0 5px rgba(0, 95, 127, 0.5);
+        }
+        .status-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 25px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #121212;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .status-icon::before {
+            content: '\2713'; /* Checkmark */
+            color: #151525; /* Dark background color */
+            display: none;
+            font-size: 1.2em;
+            position: relative;
+            z-index: 1;
+        }
+        .status-item.completed .status-icon::before {
+            display: block;
+        }
+        .status-item.pending .status-icon::before {
+            content: '';
+        }
+        .status-item.current .status-icon::before {
+            content: '\2022'; /* Dot */
+            display: block;
+            color: #151525;
+            font-size: 2em;
+        }
+        .status-icon::after { /* Glow effect */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            opacity: 0;
+            box-shadow: 0 0 20px 5px currentColor;
+            animation: glowFade 2s infinite ease-out;
+            z-index: 0;
+        }
+        .status-item.completed .status-icon::after {
+            animation: none;
+            opacity: 1;
+            box-shadow: 0 0 15px 3px #00FFC8;
+        }
+        .status-item.current .status-icon::after {
+            animation: glowPulse 1.5s infinite alternate;
+            opacity: 1;
+            box-shadow: 0 0 20px 5px #00C8FF;
+        }
+
+        .status-details {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .status-details h3 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #F8F8F8;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+        }
+        .status-details p {
+            margin: 8px 0 0;
+            font-size: 1.05em;
+            color: #A0A0A0;
+            line-height: 1.6;
+        }
+        .current .status-details h3 {
+            color: #00C8FF;
+            text-shadow: 0 0 10px rgba(0, 200, 255, 0.8);
+        }
+        .current .status-details p {
+            color: #B0B0B0;
+        }
+
+        /* New styles for highlighting and readability */
+        .highlight-title {
+            color: #00FFC8; /* Bright green for titles */
+            text-shadow: 0 0 8px rgba(0, 255, 200, 0.7);
+        }
+        .readable-text {
+            color: #99EEFF; /* Lighter blue for readability */
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 200, 255, 0.7); }
+            70% { box-shadow: 0 0 0 25px rgba(0, 200, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 200, 255, 0); }
+        }
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 20px 5px #00C8FF; }
+            50% { box-shadow: 0 0 30px 8px #00C8FF; }
+            100% { box-shadow: 0 0 20px 5px #00C8FF; }
+        }
+        @keyframes backgroundPulse {
+            0% { transform: scale(1); opacity: 0.05; }
+            50% { transform: scale(1.05); opacity: 0.1; }
+            100% { transform: scale(1); opacity: 0.05; }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            .report-container {
+                padding: 25px;
+                border-radius: 10px;
+            }
+            .header h1 {
+                font-size: 2.2em;
+                letter-spacing: 1px;
+            }
+            .header p {
+                font-size: 0.9em;
+            }
+            .info-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            .info-block {
+                margin-bottom: 20px;
+            }
+            .progress-percentage, .phase-title {
+                font-size: 1em;
+            }
+            .status-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .status-icon {
+                margin-bottom: 15px;
+            }
+            .status-details h3 {
+                font-size: 1.2em;
+            }
+            .status-details p {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        <div class="header">
+            <h1>VR Training Scenarios Project Status</h1>
+            <p>Report generated on: <span id="report-date"></span></p>
+        </div>
+
+        <div class="info-section">
+            <div class="info-block">
+                <h2>Client</h2>
+                <p>Matthew Sutton</p>
+            </div>
+            <div class="info-block">
+                <h2>Team</h2>
+                <ul>
+                    <li>Developer: Greg Eckermann</li>
+                    <li>Animation: Ivan Weinreb</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="progress-bar-container">
+            <div class="progress-bar-fill"></div>
+            <!-- Percentage on the left -->
+            <span class="progress-percentage" id="progress-percentage"></span>
+            <!-- Phase title on the right -->
+            <span class="phase-title">Current Phase: Animation Test Preview Delivery</span>
+        </div>
+
+        <ul class="status-list">
+            <li class="status-item completed">
+                <div class="status-icon"></div>
+                <div class="status-details">
+                    <h3>1. Reception of FBX Files & Character Setup</h3>
+                    <p>Received character and set FBX files. Characters (Patient & Doctor) and environment are configured and ready for animation. Material review complete.</p>
+                </div>
+            </li>
+            <li class="status-item completed">
+                <div class="status-icon"></div>
+                <div class="status-details">
+                    <h3>2. Script Review & Breakdown</h3>
+                    <p>Script has been fully reviewed and broken down into individual animation sequences. Specific actions and timing for each animation are planned.</p>
+                </div>
+            </li>
+            <li class="status-item completed">
+                <div class="status-icon"></div>
+                <div class="status-details">
+                    <h3>3. Materials Report</h3>
+                    <p>Formal report on all received assets has been delivered. No issues with file formats or textures. Everything is in order for production.
+                        <br><br>
+                        <strong class="highlight-title">REPORT: Environment</strong><br>
+                        The three files corresponded to two separate rooms. <br>
+                        The room files did not open in blender, had to convert them using Autodesk FBX converter. <br>
+                        Final version opened without materials but it is usable for animation.<br>
+                        Will work for the In/Room Animations
+                        <br><br>
+                        <strong class="highlight-title">Characters</strong><br>
+                        Doctor> Ch16_nonPBR.fbx -Skeleton seems to work fine<br>
+                        Old Woman - Skeleton not suitable for current animation set, Rig needs revisions<br>
+                        Caren - Skeleton not suitable for current animation set, Rig needs revisions<br>
+                        African Woman - Skeleton seems to work fine
+                        <br><br>
+                        <span class="readable-text">We need approval from Matthew about using the african woman for the first animation.<br>
+                        Rigs can be reviewed but it is out of scope, if the client requires we will budget rigging for pending characters.</span>
+                    </p>
+                </div>
+            </li>
+            <li class="status-item current">
+                <div class="status-icon"></div>
+                <div class="status-details">
+                    <h3>4. Animation Test Preview Delivery</h3>
+                    <p>The first animation test preview is currently being rendered for your review. This will provide a first look at the movement and timing before full production begins.</p>
+                </div>
+            </li>
+            <li class="status-item pending">
+                <div class="status-icon"></div>
+                <div class="status-details">
+                    <h3>5. Animation Approval</h3>
+                    <p>Awaiting your feedback and approval on the first animation test. Once approved, we will proceed with the next sequence.</p>
+                </div>
+            </li>
+            <li class="status-item pending">
+                <div class="status-icon"></div>
+                <div class="status-details">
+                    <h3>6. Second Animation</h3>
+                    <p>Production of the second animation sequence will begin upon approval of the first.</p>
+                </div>
+            </li>
+            <li class="status-item pending">
+                <div class="status-icon"></div>
+                <div class="status-details">
+                    <h3>7. Second Animation Approval</h3>
+                    <p>Review and approval of the second animation.</p>
+                </div>
+            </li>
+            <li class="status-item pending">
+                <div class="status-icon"></div>
+                <div class="status-details">
+                    <h3>8. Third Animation</h3>
+                    <p>Production of the final animation sequence will begin upon approval of the second.</p>
+                </div>
+            </li>
+            <li class="status-item pending">
+                <div class="status-icon"></div>
+                <div class="status-details">
+                    <h3>9. Third Animation Approval</h3>
+                    <p>Review and approval of the final animation.</p>
+                </div>
+            </li>
+            <li class="status-item pending">
+                <div class="status-icon"></div>
+                <div class="status-details">
+                    <h3>10. Budgeting AI Assistant Parts</h3>
+                    <p>Final phase: budgeting and planning for the AI assistant components, as discussed. This will be initiated after all animations are finalized.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // Sets the current date for the report.
+        document.getElementById('report-date').textContent = new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // Sets the percentage for the progress bar.
+        // Assuming 40% complete as per the previous iteration's progress bar width.
+        document.getElementById('progress-percentage').textContent = '40% Complete';
+    </script>
+
+</body>
+</html>
