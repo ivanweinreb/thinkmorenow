@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaniPaws - Product Development Roadmap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Burbank+Big+Condensed:wght@900&display=swap" rel="stylesheet">
+    <style>
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 10px 10px rgba(20, 184, 166, 0);
+            }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* slate-900 */
+            color: #e2e8f0; /* slate-200 */
+        }
+        .font-audiowide {
+            font-family: 'Audiowide', sans-serif;
+        }
+        .font-burbank {
+            font-family: 'Burbank Big Condensed', sans-serif;
+        }
+        .roadmap-container {
+            position: relative;
+            padding: 4rem 0;
+        }
+        .roadmap-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #14b8a6, transparent); /* teal-500 */
+            transform: translateX(-50%);
+        }
+        .roadmap-item {
+            position: relative;
+            width: 50%;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        .roadmap-item:nth-child(odd) {
+            left: 0;
+            padding-right: 4rem;
+        }
+        .roadmap-item:nth-child(even) {
+            left: 50%;
+            padding-left: 4rem;
+        }
+        .roadmap-content {
+            background-color: rgba(30, 41, 59, 0.5); /* slate-800 with opacity */
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(51, 65, 85, 0.5); /* slate-700 with opacity */
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .roadmap-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(20, 184, 166, 0.3);
+        }
+        .roadmap-content.active-phase {
+             box-shadow: 0 0 25px rgba(45, 212, 191, 0.5), 0 0 10px rgba(45, 212, 191, 0.3);
+             border: 1px solid rgba(45, 212, 191, 0.7);
+        }
+        .roadmap-item:nth-child(odd) .roadmap-content {
+            text-align: right;
+        }
+        .roadmap-dot {
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #14b8a6; /* teal-500 */
+            border: 4px solid #0f172a; /* slate-900 */
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+        .roadmap-content.active-phase .roadmap-dot {
+            animation: pulse 2s infinite;
+        }
+        .roadmap-item:nth-child(odd) .roadmap-dot {
+            right: -10px;
+            transform: translate(50%, -50%);
+        }
+        .roadmap-item:nth-child(even) .roadmap-dot {
+            left: -10px;
+            transform: translate(-50%, -50%);
+        }
+        .phase-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border: 1px solid;
+        }
+        .details-toggle {
+            transition: transform 0.3s ease;
+        }
+        .details-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .details-content.open {
+             max-height: 500px; /* Adjust as needed */
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .roadmap-line {
+                left: 20px;
+                transform: translateX(0);
+            }
+            .roadmap-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 4rem;
+                padding-right: 1rem;
+            }
+            .roadmap-item:nth-child(odd) {
+                padding-right: 1rem;
+            }
+            .roadmap-item:nth-child(even) {
+                padding-left: 4rem;
+            }
+            .roadmap-item:nth-child(odd) .roadmap-content {
+                text-align: left;
+            }
+            .roadmap-dot {
+                left: 10px !important;
+                transform: translate(-50%, -50%);
+            }
+            .roadmap-content, .roadmap-item:nth-child(odd) .roadmap-content {
+                text-align: left;
+            }
+            .progress-text {
+                text-align: right;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mx-auto px-4 py-12">
+        <!-- Header Section -->
+        <div class="text-center mb-16">
+            <div class="flex justify-center items-center mb-4">
+                 <!-- Modern Igloo SVG -->
+                 <svg class="w-28 h-28" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#2dd4bf;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <!-- Main Igloo Dome -->
+                    <path d="M170 180 C 170 102.68 107.32 40 30 40 C 30 40 30 180 30 180 Z" fill="rgba(51, 65, 85, 0.6)"/>
+                    <path d="M170 180 C 170 102.68 107.32 40 30 40" stroke="url(#grad1)" stroke-width="2.5" filter="url(#glow)"/>
+                    <!-- Entrance Tunnel -->
+                    <path d="M50 180 L 50 140 C 50 128.95 58.95 120 70 120 L 100 120 C 111.05 120 120 128.95 120 140 L 120 180" fill="rgba(30, 41, 59, 0.8)"/>
+                    <path d="M50 140 C 50 128.95 58.95 120 70 120 L 100 120 C 111.05 120 120 128.95 120 140" stroke="#0ea5e9" stroke-width="1.5"/>
+                    <!-- Igloo Lines -->
+                    <path d="M165 140 C 124.2 80 75.8 60 30 55" stroke="rgba(51, 65, 85, 0.5)" stroke-width="1.5" />
+                    <path d="M155 100 C 110.4 60 69.6 50 30 75" stroke="rgba(51, 65, 85, 0.5)" stroke-width="1.5" />
+                </svg>
+            </div>
+            <h2 class="font-audiowide text-2xl text-teal-400 tracking-widest mb-2">Project: SiftMaster</h2>
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-100 tracking-wider">SaniPaws</h1>
+            <p class="mt-4 text-lg text-slate-400">Product Development & Launch Roadmap</p>
+            <p class="font-burbank text-xl text-slate-300 mt-6 tracking-wider">Click the <span class="text-teal-400 text-3xl mx-1">+</span> buttons on each phase for more details!</p>
+        </div>
+
+        <!-- Roadmap -->
+        <div class="roadmap-container">
+            <div class="roadmap-line"></div>
+            
+            <!-- Phase 1: 3D Visualization -->
+            <div class="roadmap-item">
+                <div class="roadmap-content active-phase">
+                    <button class="details-toggle absolute top-4 right-4 text-3xl font-light text-slate-400 hover:text-teal-400 transition-colors">+</button>
+                    <div class="roadmap-dot"></div>
+                    <span class="phase-tag border-teal-400 text-teal-300">Phase 1 - In Progress</span>
+                    <h3 class="text-2xl font-bold mt-2 text-slate-100">Concept Visualization</h3>
+                    <p class="text-slate-400 mt-2">Bringing the concept to life with a detailed 3D model and renders of the SaniPaws system using Blender.</p>
+                    <div class="w-full bg-slate-700 rounded-full h-2.5 mt-4">
+                        <div class="bg-teal-400 h-2.5 rounded-full" style="width: 6%"></div>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1 progress-text">Day 1 of 15 (Started: July 10, 2025)</p>
+                    <div class="details-content mt-4 pt-4 border-t border-slate-700/50 text-left">
+                        <h4 class="font-semibold text-slate-200 mb-2">Key Tasks:</h4>
+                        <ul class="list-disc list-inside text-slate-400 space-y-1 text-sm">
+                            <li>Block-out modeling of the dome, tunnel, and core components.</li>
+                            <li>Basic modelling of the treadmill and internal mechanisms.</li>
+                            <li>UV unwrapping, texturing, and material creation.</li>
+                            <li>Generate 3-5 high-resolution photorealistic renders for review.</li>
+                            <li class="text-slate-500">✅ <s>Draft the "Next Actions" document outlining the path forward.</s></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 2: Formal CAD & Engineering -->
+            <div class="roadmap-item">
+                <div class="roadmap-content">
+                    <button class="details-toggle absolute top-4 left-4 text-3xl font-light text-slate-400 hover:text-sky-400 transition-colors">+</button>
+                    <div class="roadmap-dot"></div>
+                    <span class="phase-tag border-sky-400 text-sky-300">Phase 2</span>
+                    <h3 class="text-2xl font-bold mt-2 text-slate-100">Formal CAD & Engineering</h3>
+                    <p class="text-slate-400 mt-2">Developing precise, manufacturable CAD models ready for prototyping and engineering analysis.</p>
+                     <div class="w-full bg-slate-700 rounded-full h-2.5 mt-4">
+                        <div class="bg-sky-400 h-2.5 rounded-full" style="width: 0%"></div>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1 progress-text">0% complete</p>
+                    <div class="details-content mt-4 pt-4 border-t border-slate-700/50 text-left">
+                        <h4 class="font-semibold text-slate-200 mb-2">Key Tasks:</h4>
+                        <ul class="list-disc list-inside text-slate-400 space-y-1 text-sm">
+                            <li>Convert 3D model to parametric CAD format (e.g., STEP).</li>
+                            <li>Optimize geometry for manufacturability (e.g., draft angles, wall thickness, tolerances).</li>
+                            <li>Detailed mechanical design of the treadmill assembly and housing.</li>
+                            <li>Material specification and tolerance analysis for all parts.</li>
+                            <li>Create a complete Bill of Materials (BOM).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 3: Prototyping -->
+            <div class="roadmap-item">
+                <div class="roadmap-content">
+                    <button class="details-toggle absolute top-4 right-4 text-3xl font-light text-slate-400 hover:text-violet-400 transition-colors">+</button>
+                    <div class="roadmap-dot"></div>
+                    <span class="phase-tag border-violet-400 text-violet-300">Phase 3</span>
+
+                    <h3 class="text-2xl font-bold mt-2 text-slate-100">Prototyping & Evaluation</h3>
+                    <p class="text-slate-400 mt-2">Creating physical prototypes to test functionality, ergonomics, and aesthetics for real-world refinement.</p>
+                     <div class="w-full bg-slate-700 rounded-full h-2.5 mt-4">
+                        <div class="bg-violet-400 h-2.5 rounded-full" style="width: 0%"></div>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1 progress-text">0% complete</p>
+                    <div class="details-content mt-4 pt-4 border-t border-slate-700/50 text-left">
+                        <h4 class="font-semibold text-slate-200 mb-2">Key Tasks:</h4>
+                        <ul class="list-disc list-inside text-slate-400 space-y-1 text-sm">
+                            <li>Generate STL files for 3D printing of all custom parts.</li>
+                            <li>Assemble the first full-scale physical prototype.</li>
+                            <li>Conduct functional tests: treadmill movement, cat entry/exit flow.</li>
+                            <li>Gather feedback on usability, cleaning, and cat acceptance.</li>
+                            <li>Implement design changes in CAD based on evaluation results.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 4: Manufacturing & Launch -->
+            <div class="roadmap-item">
+                <div class="roadmap-content">
+                    <button class="details-toggle absolute top-4 left-4 text-3xl font-light text-slate-400 hover:text-fuchsia-400 transition-colors">+</button>
+                    <div class="roadmap-dot"></div>
+                    <span class="phase-tag border-fuchsia-400 text-fuchsia-300">Phase 4</span>
+                    <h3 class="text-2xl font-bold mt-2 text-slate-100">Manufacturing & Launch</h3>
+                    <p class="text-slate-400 mt-2">Finalizing the design and delivering all files and recommendations for manufacturing partners.</p>
+                     <div class="w-full bg-slate-700 rounded-full h-2.5 mt-4">
+                        <div class="bg-fuchsia-400 h-2.5 rounded-full" style="width: 0%"></div>
+                    </div>
+                    <p class="text-xs text-slate-400 mt-1 progress-text">0% complete</p>
+                    <div class="details-content mt-4 pt-4 border-t border-slate-700/50 text-left">
+                        <h4 class="font-semibold text-slate-200 mb-2">Key Tasks:</h4>
+                        <ul class="list-disc list-inside text-slate-400 space-y-1 text-sm">
+                            <li>Finalize CAD models and create 2D manufacturing drawings.</li>
+                            <li>Develop a Request for Quotation (RFQ) package for vendors.</li>
+                            <li>Identify and provide recommendations for potential manufacturers.</li>
+                            <li>Deliver all final design files, documentation, and BOM.</li>
+                            <li>Testing first production units.</li>
+                            <li>Generate merchandise designs.</li>
+                            <li>Generate advertising media.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="text-center mt-16 pt-8 border-t border-slate-700">
+            <p class="text-xs text-slate-500 max-w-2xl mx-auto">
+                <strong>Confidentiality Notice:</strong> This document and the concepts herein are the exclusive intellectual property of Alyssia & Danny Odom, Owners of Sani Paws, LLC. All rights reserved. Unauthorized distribution or reproduction is strictly prohibited.
+            </p>
+        </footer>
+    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggles = document.querySelectorAll('.details-toggle');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const content = toggle.parentElement.querySelector('.details-content');
+                const isOpen = content.classList.contains('open');
+                
+                content.classList.toggle('open');
+                toggle.textContent = isOpen ? '+' : '−';
+                toggle.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+            });
+        });
+    });
+</script>
+</body>
+</html>
