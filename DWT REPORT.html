@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventurer's Quest Log</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f3e9d2;
+            background-image:
+                linear-gradient(rgba(0,0,0,0.05) 2px, transparent 2px),
+                linear-gradient(90deg, rgba(0,0,0,0.05) 2px, transparent 2px),
+                linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size:100px 100px, 100px 100px, 20px 20px, 20px 20px;
+            background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+            color: #4a2c2a;
+        }
+
+        .font-title {
+            font-family: 'IM Fell English SC', serif;
+        }
+
+        .font-body {
+            font-family: 'MedievalSharp', cursive;
+        }
+
+        .parchment {
+            background-color: #fdf6e3;
+            border: 20px solid transparent;
+            border-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><style>path{fill:%23c89f68;}</style><path d="M0,0 H100 V100 H0 Z M5,5 V95 H95 V5 Z"/></svg>') 30 round;
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .wax-seal {
+            position: absolute;
+            bottom: -35px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            background-color: #a62626;
+            border-radius: 50%;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.4), inset 0 0 10px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4a2a2;
+            font-family: 'IM Fell English SC', serif;
+            font-size: 2.5rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            border: 3px solid #801e1e;
+        }
+
+        .quest-item {
+            border-bottom: 2px dashed rgba(74, 44, 42, 0.2);
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+        .quest-item:last-child {
+            border-bottom: none;
+        }
+
+        .status-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 0.75rem;
+        }
+        
+        .status-completed { color: #2e7d32; }
+        .status-pending { color: #b5520b; }
+
+    </style>
+</head>
+<body class="font-body">
+
+    <div class="w-full max-w-3xl parchment">
+        <!-- Header -->
+        <div class="text-center pb-4 border-b-4 border-double border-[#c89f68]">
+            <h1 class="text-4xl md:text-5xl font-title">Dead World Tales</h1>
+            <p class="text-lg mt-2">INTROS&nbsp; PENDIENTES</p>
+        </div>
+
+        <!-- Patron Info -->
+        <div class="my-6 text-xl">
+            <p><strong class="font-title">CLIENTE:</strong> Lucas</p>
+            <p><strong class="font-title">Agent:</strong> Ivan Weinreb</p>
+      </div>
+
+        <!-- Quest List -->
+        <div>
+            <h2 class="text-3xl font-title mb-4">Current Undertakings</h2>
+            <div class="bg-black/5 rounded-lg p-4">
+                <!-- Quest Items -->
+                <div class="quest-item flex items-center justify-between text-2xl">
+                    <span class="font-bold">Primavera</span>
+                    <div class="flex items-center status-pending">
+                        <svg class="status-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span>Pending</span>
+                    </div>
+                </div>
+                <div class="quest-item flex items-center justify-between text-2xl">
+                    <span class="font-bold">Hunt</span>
+                    <div class="flex items-center status-completed">
+                         <svg class="status-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span>Completed</span>
+                    </div>
+                </div>
+                 <div class="quest-item flex items-center justify-between text-2xl">
+                    <span class="font-bold">Dictado</span>
+                    <div class="flex items-center status-pending">
+                        <svg class="status-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span>Pending</span>
+                    </div>
+                </div>
+                <div class="quest-item flex items-center justify-between text-2xl">
+                    <span class="font-bold">Innocent</span>
+                    <div class="flex items-center status-completed">
+                         <svg class="status-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span>Completed</span>
+                    </div>
+                </div>
+                <div class="quest-item flex items-center justify-between text-2xl">
+                    <span class="font-bold">Ultima Luz</span>
+                    <div class="flex items-center status-pending">
+                        <svg class="status-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span>Pending</span>
+                    </div>
+                </div>
+                <div class="quest-item flex items-center justify-between text-2xl">
+                    <span class="font-bold">Agua</span>
+                    <div class="flex items-center status-pending">
+                        <svg class="status-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span>Pending</span>
+                    </div>
+                </div>
+                <div class="quest-item flex items-center justify-between text-2xl">
+                    <span class="font-bold">Mercy</span>
+                    <div class="flex items-center status-completed">
+                         <svg class="status-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span>Completed</span>
+                    </div>
+                </div>
+                <div class="quest-item flex items-center justify-between text-2xl">
+                    <span class="font-bold">Ruinas</span>
+                    <div class="flex items-center status-completed">
+                         <svg class="status-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span>Completed</span>
+                    </div>
+                </div>
+                 <div class="quest-item flex items-center justify-between text-2xl">
+                    <span class="font-bold">Vaccine</span>
+                    <div class="flex items-center status-pending">
+                        <svg class="status-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span>Pending</span>
+                    </div>
+                </div>
+                <div class="quest-item flex items-center justify-between text-2xl">
+                    <span class="font-bold">Science</span>
+                    <div class="flex items-center status-completed">
+                         <svg class="status-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span>Completed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contract Terms -->
+        <div class="mt-8 pt-6 border-t-4 border-double border-[#c89f68]">
+            <h2 class="text-3xl font-title mb-4">COPA Y DADOS LISTOS</h2>
+            <div class="text-xl space-y-4">
+                <div>
+                    <h3 class="font-bold">&nbsp;</h3>
+                    <p class="text-2xl text-amber-700">&nbsp;</p>
+                    <p class="text-base italic mt-1">&nbsp;</p>
+              </div>
+                <div>
+                    <h3 class="font-bold">BONUS TABLE LEVEL</h3>
+                    <p class="text-2xl text-amber-700">Pendiente</p>
+                    <p class="text-base italic mt-1">&nbsp;</p>
+              </div>
+          </div>
+      </div>
+        
+        <div class="wax-seal">G</div>
+
+</div>
+
+</body>
+</html>
