@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aesthetic Product Video - Roadmap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a101f; /* Deep space blue */
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(13, 110, 253, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 85% 75%, rgba(255, 193, 7, 0.1) 0%, transparent 30%);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -31px;
+            top: 22px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #1e293b; /* Slate-800 */
+            border: 4px solid #4f46e5; /* Indigo-600 */
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover::before {
+            background-color: #f59e0b; /* Amber-500 */
+            transform: scale(1.2);
+        }
+        .card-glow {
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.3), 0 0 5px rgba(79, 70, 229, 0.2);
+        }
+        .card-glow:hover {
+             box-shadow: 0 0 30px rgba(79, 70, 229, 0.5), 0 0 10px rgba(79, 70, 229, 0.4);
+        }
+        .current-week-glow {
+            box-shadow: 0 0 40px rgba(245, 158, 11, 0.4), 0 0 15px rgba(245, 158, 11, 0.3);
+        }
+    </style>
+</head>
+<body class="text-gray-200 antialiased">
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+
+        <!-- Header Section -->
+        <header class="text-center mb-16 sm:mb-24">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-orange-500">Aesthetic Product Video</span>
+            </h1>
+            <p class="mt-4 text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto">
+                A Strategic Roadmap for <a href="https://solartileroof.us" target="_blank" class="font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">SolarTileRoof.us</a>
+            </p>
+            <p class="mt-2 text-md text-gray-500">By Ivan Weinreb</p>
+        </header>
+
+        <!-- Timeline Section -->
+        <div class="relative max-w-3xl mx-auto">
+            <!-- The vertical line -->
+            <div class="absolute left-0 top-2 h-full w-0.5 bg-slate-700" style="transform: translateX(-20px);"></div>
+
+            <!-- Timeline Item 1 (Current Week) -->
+            <div class="relative pl-8 sm:pl-12 mb-12 timeline-item">
+                <div class="bg-slate-900/50 backdrop-blur-sm border border-amber-500 rounded-xl p-6 sm:p-8 transition-shadow duration-300 current-week-glow">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl sm:text-2xl font-bold text-amber-400">Week 1: Pre-production & Analysis</h3>
+                        <div class="bg-indigo-600/10 border border-indigo-500 text-indigo-300 text-sm font-semibold px-4 py-1 rounded-full">$375.00</div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Deep dive into the product's essence. This phase focuses on technical and creative preparation to ensure a flawless execution.</p>
+                    <!-- Deliverables List -->
+                    <div class="space-y-3 mt-5">
+                        <div class="flex items-start space-x-4 text-gray-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z" /></svg>
+                            <span class="font-medium">Reception of all reference materials.</span>
+                        </div>
+                        <div class="flex items-start space-x-4 text-gray-300">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                            <span class="font-medium">Project specifications meeting.</span>
+                        </div>
+                        <div class="flex items-start space-x-4 text-gray-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-400 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                            <span class="font-medium">Analysis of 3D models & camera selection.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline Item 2 -->
+            <div class="relative pl-8 sm:pl-12 mb-12 timeline-item">
+                <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl p-6 sm:p-8 card-glow transition-shadow duration-300">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl sm:text-2xl font-bold text-white">Week 2: 3D & Environment Layout</h3>
+                        <div class="bg-indigo-600/10 border border-indigo-500 text-indigo-300 text-sm font-semibold px-4 py-1 rounded-full">$375.00</div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Translating concepts into a tangible, digital world. We build the foundation of the visual narrative with precision and artistry.</p>
+                    <div class="flex items-start space-x-4 text-gray-300">
+                        <!-- Icon: 3D Cube -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-400 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" />
+                        </svg>
+                        <span class="font-medium">Realistic digital translation of the solar tile product and strategic environment layout.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline Item 3 -->
+            <div class="relative pl-8 sm:pl-12 mb-12 timeline-item">
+                <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl p-6 sm:p-8 card-glow transition-shadow duration-300">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl sm:text-2xl font-bold text-white">Week 3: VFX & Scene Review</h3>
+                        <div class="bg-indigo-600/10 border border-indigo-500 text-indigo-300 text-sm font-semibold px-4 py-1 rounded-full">$375.00</div>
+                    </div>
+                    <p class="text-gray-400 mb-4">Bringing the scenes to life. This is where we infuse the visuals with energy, realism, and the awe-inspiring power of the sun.</p>
+                    <div class="flex items-start space-x-4 text-gray-300">
+                        <!-- Icon: Sun -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-400 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <span class="font-medium">Client review of first scenes, development of Sun VFX, and refinement of all materials.</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Timeline Item 4 -->
+            <div class="relative pl-8 sm:pl-12 timeline-item">
+                <div class="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl p-6 sm:p-8 card-glow transition-shadow duration-300">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl sm:text-2xl font-bold text-white">Final Week: Delivery & Handover</h3>
+                        <div class="bg-green-600/10 border border-green-500 text-green-300 text-sm font-semibold px-4 py-1 rounded-full">$375.00</div>
+                    </div>
+                    <p class="text-gray-400 mb-4">The culmination of our creative and technical efforts. We deliver the final product and transfer full ownership to the client.</p>
+                    <div class="flex items-start space-x-4 text-gray-300">
+                        <!-- Icon: Check Shield -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-400 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                        <span class="font-medium">Delivery of all project files and the full, unconditional transfer of all copyrights to the client.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Section -->
+        <div class="max-w-3xl mx-auto mt-16 sm:mt-24 border-t border-slate-800 pt-8 text-center">
+             <h3 class="text-lg font-medium text-gray-400">Total Project Investment</h3>
+             <p class="text-4xl sm:text-5xl font-extrabold text-white mt-2">$1,500.00</p>
+             <p class="mt-4 text-gray-500">A phased investment ensuring commitment and quality at every step of the creative process.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
