@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Tile Roof // Pre-Production Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+            color: #d1d5db; /* text-gray-300 */
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .card {
+            background-color: #1f2937; /* bg-gray-800 */
+            border: 1px solid #374151; /* border-gray-700 */
+            border-radius: 0.75rem; /* rounded-xl */
+            transition: all 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+        .status-complete {
+            background-color: #10B981; /* bg-emerald-500 */
+            color: #ffffff;
+        }
+        .status-ready {
+            background-color: #3B82F6; /* bg-blue-500 */
+            color: #ffffff;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            background-image: linear-gradient(to right, #3B82F6, #6366F1);
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.25);
+        }
+        h1, h2, h3 {
+            color: #ffffff;
+            font-weight: 700;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -2.75rem;
+            top: 0.25rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #374151; /* bg-gray-700 */
+            border: 3px solid #4f46e5; /* border-indigo-600 */
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container p-4 sm:p-8">
+
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500">Solar Tile Roof</h1>
+            <p class="text-xl text-gray-400">Pre-Production Report</p>
+            <p class="text-sm text-gray-500 mt-2">Date: August 25, 2025</p>
+        </header>
+
+        <!-- Status Section -->
+        <div class="card p-6 mb-12 text-center">
+            <h2 class="text-2xl font-semibold mb-4">Project Status</h2>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <div class="status-badge status-complete">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Phase 1: Pre-Production & Analysis - COMPLETE
+                </div>
+                <div class="status-badge status-ready">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    Ready for Production
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline / Report Details -->
+        <div class="relative border-l-2 border-gray-700 ml-12 pl-12 pb-1">
+
+            <!-- Section 1: Project Kick-off -->
+            <div class="mb-12 card p-6 relative">
+                <div class="timeline-dot">
+                    <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">1. Project Kick-off & Asset Collection</h3>
+                <p class="mb-4">The initial meeting with Paul McCormack was highly productive. We successfully defined the scope, selecting the primary house roof model and receiving the flagship product's rotating video. The foundational camera angles were established, starting with an isometric rotation and incorporating angles inspired by the official company website.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://www.shutterstock.com/video/clip-3619508203-solar-roof-covered-photovoltaic-panels-on-private?dd_referrer=https%3A%2F%2Fwww.google.com%2F" target="_blank" class="btn">View Camera Angle Reference</a>
+                    <a href="https://solartileroof.us/" target="_blank" class="btn">Visit SolarTileRoof.us</a>
+                </div>
+            </div>
+
+            <!-- Section 2: Creative Direction -->
+            <div class="mb-12 card p-6 relative">
+                <div class="timeline-dot">
+                     <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">2. Creative & Technical Direction</h3>
+                <p class="mb-2">As per Paul's direction, the project's primary objective is aesthetic appeal to drive sales, focusing on showcasing the product in the best possible light rather than technical minutiae.</p>
+                <p>To achieve this, Ivan Weinreb has proposed leveraging Unreal Engine's advanced lighting capabilities. This will allow for dynamic control over sunlight, shadows, and ambient conditions, synchronized with camera movements to create a visually stunning and motivational presentation.</p>
+            </div>
+
+            <!-- Section 3: Asset Processing -->
+            <div class="mb-12 card p-6 relative">
+                 <div class="timeline-dot">
+                     <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4M4 7v4c0 2.21 3.582 4 8 4s8-1.79 8-4V7"></path></svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">3. Asset Processing & Delivery</h3>
+                <p class="mb-4">We received the STEP file for the flagship solar tile. Subsequent files were successfully converted to the more accessible GLTF format (as binary .glb files), empowering our client with better control and review capabilities. Additionally, 6 sets of non-solar tile images and various supporting documents (DOC, JPG, PNG, PDF) were delivered as received from the Solar Tile Roof team and approved by Ivan's team for digital twin creation.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://drive.google.com/drive/folders/1z5xBPQkmepRcRCI-hHMifsCM9XGUZADU?usp=sharing" target="_blank" class="btn">View Original Reference Files</a>
+                    <a href="https://drive.google.com/drive/folders/12e37cjc_eYpEBh4fZAX4K2jymJ4ALGHC?usp=sharing" target="_blank" class="btn">Review Converted GLTF Assets</a>
+                </div>
+            </div>
+
+            <!-- Section 4: Production Readiness -->
+            <div class="mb-12 card p-6 relative">
+                 <div class="timeline-dot">
+                    <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">4. Conclusion: Ready for Phase 2</h3>
+                <p>With all initial files received, processed, and approved, we can confidently conclude the pre-production phase. We are fully prepared to advance to the next stage: <strong>Realistic translation of product and environment layout.</strong></p>
+                <p class="mt-2">This next phase will be executed within 7 days following the release of the pre-production milestone payment. Please coordinate with Maria C (Project Coordinator) to ensure the milestone is released.</p>
+            </div>
+
+            <!-- Section 5: Observations -->
+            <div class="card p-6 relative border-l-4 border-yellow-400 bg-gray-800/50">
+                <h3 class="text-xl font-semibold mb-3 text-yellow-300">Observations & Key Decisions for Phase 2</h3>
+                <p class="mb-4">A critical decision regarding the side-endings of the roofs needs to be made within <strong>72 hours</strong> after the start of Phase 2. The current tile design appears best suited for straight borders. Please review the compatibility tests and reference materials in the linked folder to inform this decision.</p>
+                <a href="https://drive.google.com/drive/folders/12EzKaTv_DwJO1B0CUz2SSIt5MtTx1Zej?usp=sharing" target="_blank" class="btn">View Compatibility Tests</a>
+            </div>
+        </div>
+
+        <!-- Closing Remarks -->
+        <footer class="mt-16 text-center">
+            <div class="w-16 h-1 bg-indigo-500 mx-auto mb-6 rounded"></div>
+            <h2 class="text-2xl font-semibold mb-4">A Word of Thanks</h2>
+            <p class="max-w-3xl mx-auto text-gray-400">The collaboration on this project has been a wonderful experience so far. The clarity of vision and the quality of the materials provided have set a fantastic foundation. We are incredibly excited to start delivering visual advances in the next stage: <strong>Week 2 - Realistic translation of product, environment layout.</strong></p>
+        </footer>
+
+    </div>
+</body>
+</html>
